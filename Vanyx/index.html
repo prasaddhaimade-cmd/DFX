@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vanyx Design System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600&family=JetBrains+Mono:wght@400;500&family=Karla:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tokens/tokens.css">
+<link rel="stylesheet" href="components/components.css">
+<style>
+  .wrap { max-width: 1040px; margin: 0 auto; padding: var(--space-6) var(--space-4) var(--space-9); }
+  header.top { display: flex; justify-content: space-between; align-items: flex-start; gap: var(--space-4); flex-wrap: wrap; }
+  h1 { font: var(--type-display-medium); margin: 0 0 var(--space-2); }
+  .lede { font: var(--type-body-large); color: var(--ink-muted); max-width: 60ch; margin: 0; }
+  section { margin-top: var(--space-8); }
+  h2 { font: var(--type-headline-medium); margin: 0 0 var(--space-4); }
+  .row { display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: var(--space-3); }
+  .sw { border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); overflow: hidden; background: var(--layer-01); }
+  .sw i { display: block; height: 44px; border-bottom: 1px solid var(--border-subtle); }
+  .sw b { display: block; padding: var(--space-2) var(--space-2) 0; font: var(--type-label-medium); }
+  .sw span { display: block; padding: 0 var(--space-2) var(--space-2); font: var(--type-data-small); color: var(--ink-muted); }
+  .two { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-5); }
+  .stack { display: flex; flex-direction: column; gap: var(--space-3); }
+</style>
+</head>
+<body class="vx-body">
+<div class="wrap">
+  <header class="top">
+    <div>
+      <h1>Vanyx</h1>
+      <p class="lede">One design system merged from Material Design 3, IBM Carbon, GitHub Primer and Lumen. Warm neutrals, a single teal accent, role-based colour pairs, layered surfaces, and dense data-friendly components.</p>
+    </div>
+    <button class="vx-btn vx-btn--outline" id="theme">Toggle theme</button>
+  </header>
+
+  <section>
+    <h2>Colour</h2>
+    <div class="grid" id="swatches"></div>
+  </section>
+
+  <section>
+    <h2>Type</h2>
+    <div class="stack">
+      <div class="t-display-medium">Display, Fraunces 40</div>
+      <div class="t-headline-large">Headline large, Karla 28</div>
+      <div class="t-title-medium">Title medium, Karla 16 bold</div>
+      <div class="t-body-large">Body large. Everything that needs to be read quickly and cleanly.</div>
+      <div class="t-body-compact">Body compact for dense tables and forms.</div>
+      <div class="t-label-medium">LABEL MEDIUM</div>
+      <div class="t-data-large">data-large 1,284.50 &middot; 2026-10-02 &middot; a1b2c3d</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Buttons</h2>
+    <div class="row">
+      <button class="vx-btn vx-btn--primary">Primary</button>
+      <button class="vx-btn vx-btn--secondary">Secondary</button>
+      <button class="vx-btn vx-btn--outline">Outline</button>
+      <button class="vx-btn vx-btn--ghost">Ghost</button>
+      <button class="vx-btn vx-btn--danger">Delete</button>
+      <button class="vx-btn vx-btn--primary vx-btn--pill">Pill</button>
+      <button class="vx-btn vx-btn--primary vx-btn--sm">Small</button>
+      <button class="vx-btn vx-btn--primary" disabled>Disabled</button>
+    </div>
+  </section>
+
+  <section class="two">
+    <div>
+      <h2>Form</h2>
+      <div class="stack">
+        <div class="vx-field"><label class="vx-label" for="a">Project name</label><input class="vx-input" id="a" placeholder="Q4 campaign"><span class="vx-help">Shown in reports.</span></div>
+        <div class="vx-field"><label class="vx-label" for="b">Budget</label><input class="vx-input" id="b" value="-12" aria-invalid="true"><span class="vx-error">Budget must be positive.</span></div>
+        <label class="row"><input type="checkbox" class="vx-check" checked> Send weekly summary</label>
+      </div>
+    </div>
+    <div>
+      <h2>Cards</h2>
+      <div class="stack">
+        <div class="vx-card"><h3 class="vx-card__title">Standard card</h3><p class="vx-card__meta">Border separates it from the page, Primer style.</p></div>
+        <div class="vx-card vx-card--raised"><h3 class="vx-card__title">Raised card</h3><p class="vx-card__meta">Uses shadow-1.</p></div>
+        <div class="vx-card vx-card--inset"><h3 class="vx-card__title">Inset card</h3><p class="vx-card__meta">layer-02 inside a layer-01 panel.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Status</h2>
+    <div class="row" style="margin-bottom: var(--space-4)">
+      <span class="vx-badge vx-badge--accent">Selected</span>
+      <span class="vx-badge vx-badge--success"><span class="vx-dot is-success"></span>Passing</span>
+      <span class="vx-badge vx-badge--warning"><span class="vx-dot is-warning"></span>Pending</span>
+      <span class="vx-badge vx-badge--danger"><span class="vx-dot is-danger"></span>Failed</span>
+      <span class="vx-badge vx-badge--info"><span class="vx-dot is-info"></span>Info</span>
+      <span class="vx-badge vx-badge--done"><span class="vx-dot is-done"></span>Done</span>
+      <span class="vx-badge vx-badge--solid-done">Merged</span>
+      <span class="vx-badge vx-badge--solid-closed">Closed</span>
+    </div>
+    <div class="stack">
+      <div class="vx-alert vx-alert--success"><div><p class="vx-alert__title">Saved</p><p class="vx-alert__body">Your changes are live.</p></div></div>
+      <div class="vx-alert vx-alert--warning"><div><p class="vx-alert__title">Budget nearly spent</p><p class="vx-alert__body">92% of the monthly budget is used.</p></div></div>
+      <div class="vx-alert vx-alert--danger"><div><p class="vx-alert__title">Sync failed</p><p class="vx-alert__body">Check the connection and retry.</p></div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Tabs and table</h2>
+    <div class="vx-tabs" role="tablist">
+      <button class="vx-tab" role="tab" aria-selected="true">Campaigns</button>
+      <button class="vx-tab" role="tab" aria-selected="false">Tags</button>
+      <button class="vx-tab" role="tab" aria-selected="false">Budgets</button>
+    </div>
+    <table class="vx-table" style="margin-top: var(--space-3)">
+      <thead><tr><th>Campaign</th><th>Status</th><th class="is-num">Spend</th><th class="is-num">ROAS</th></tr></thead>
+      <tbody>
+        <tr><td>Spring launch</td><td><span class="vx-badge vx-badge--success"><span class="vx-dot is-success"></span>Active</span></td><td class="is-num">4,210.00</td><td class="is-num">3.8</td></tr>
+        <tr><td>Retargeting</td><td><span class="vx-badge vx-badge--warning"><span class="vx-dot is-warning"></span>Learning</span></td><td class="is-num">1,180.40</td><td class="is-num">2.1</td></tr>
+        <tr><td>Brand search</td><td><span class="vx-badge vx-badge--solid-done">Completed</span></td><td class="is-num">9,902.75</td><td class="is-num">5.4</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>Snackbar and avatar</h2>
+    <div class="row"><span class="vx-snackbar">Campaign archived <button class="vx-btn vx-btn--ghost vx-btn--sm" style="color:inherit">Undo</button></span><span class="vx-avatar">PD</span></div>
+  </section>
+</div>
+<script>
+  const root = document.documentElement;
+  document.getElementById('theme').onclick = () => {
+    const dark = getComputedStyle(root).colorScheme.includes('dark');
+    root.dataset.theme = dark ? 'light' : 'dark';
+    paint();
+  };
+  const names = ['bg','layer-01','layer-02','layer-03','ink','ink-muted','border-subtle','border-strong','accent','accent-container','link','focus','secondary-container','tertiary-container','success-fg','warning-fg','danger-fg','info-fg','done-fg','neutral-emphasis'];
+  function paint() {
+    const cs = getComputedStyle(root);
+    document.getElementById('swatches').innerHTML = names.map(n =>
+      `<div class="sw"><i style="background:var(--${n})"></i><b>${n}</b><span>${cs.getPropertyValue('--'+n).trim()}</span></div>`).join('');
+  }
+  paint();
+</script>
+</body>
+</html>

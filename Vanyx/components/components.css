@@ -1,0 +1,156 @@
+/* Vanyx components. Plain CSS, no framework. Requires ../tokens/tokens.css.
+   Class prefix: vx-. Every value is a token; do not add raw hex or px colours here. */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body.vx-body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: var(--type-body-medium);
+}
+
+/* Focus: a ring offset from the control so it sits on the surrounding surface, never on a fill. */
+.vx-focusable:focus-visible,
+.vx-btn:focus-visible, .vx-input:focus-visible, .vx-select:focus-visible,
+.vx-tab:focus-visible, .vx-link:focus-visible, .vx-check:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+/* ---------- Button ---------- */
+.vx-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2);
+  min-height: 40px; padding: 0 var(--space-4);
+  border: 1px solid transparent; border-radius: var(--radius-md);
+  font: var(--type-label-large); cursor: pointer;
+  background: var(--layer-03); color: var(--ink);
+  transition: background-color .12s, border-color .12s;
+}
+.vx-btn:disabled { opacity: .45; cursor: not-allowed; }
+.vx-btn--primary { background: var(--accent); color: var(--on-accent); }
+.vx-btn--primary:hover:not(:disabled) { filter: brightness(1.08); }
+.vx-btn--secondary { background: var(--secondary-container); color: var(--on-secondary-container); }
+.vx-btn--outline { background: transparent; border-color: var(--border-strong); color: var(--ink); }
+.vx-btn--outline:hover:not(:disabled) { background: var(--layer-02); }
+.vx-btn--ghost { background: transparent; color: var(--link); }
+.vx-btn--ghost:hover:not(:disabled) { background: var(--accent-container); color: var(--on-accent-container); }
+.vx-btn--danger { background: var(--danger-emphasis); color: var(--on-emphasis); }
+.vx-btn--sm { min-height: 32px; padding: 0 var(--space-3); font: var(--type-label-medium); border-radius: var(--radius-sm); }
+.vx-btn--pill { border-radius: var(--radius-full); }
+
+/* ---------- Form controls ---------- */
+.vx-field { display: flex; flex-direction: column; gap: var(--space-1); }
+.vx-label { font: var(--type-label-medium); color: var(--ink); }
+.vx-help { font: var(--type-body-small); color: var(--ink-muted); }
+.vx-error { font: var(--type-body-small); color: var(--danger-fg); }
+.vx-input, .vx-select {
+  min-height: 40px; padding: 0 var(--space-3);
+  background: var(--layer-01); color: var(--ink);
+  border: 1px solid var(--border-strong); border-radius: var(--radius-sm);
+  font: var(--type-body-medium); width: 100%;
+}
+.vx-input::placeholder { color: var(--ink-muted); }
+.vx-input[aria-invalid="true"] { border-color: var(--danger-fg); background: var(--danger-container); }
+.vx-check { accent-color: var(--accent); width: 18px; height: 18px; }
+
+/* ---------- Card ---------- */
+.vx-card {
+  background: var(--layer-01); color: var(--ink);
+  border: 1px solid var(--border-subtle); border-radius: var(--radius-md);
+  padding: var(--space-4);
+}
+.vx-card--raised { border-color: transparent; box-shadow: var(--shadow-1); }
+.vx-card--inset { background: var(--layer-02); border-color: transparent; }
+.vx-card__title { font: var(--type-title-medium); margin: 0 0 var(--space-1); }
+.vx-card__meta { font: var(--type-body-small); color: var(--ink-muted); margin: 0; }
+
+/* ---------- Badge / tag / status ---------- */
+.vx-badge {
+  display: inline-flex; align-items: center; gap: var(--space-1);
+  padding: var(--space-0) var(--space-2); border-radius: var(--radius-full);
+  font: var(--type-label-medium); background: var(--layer-03); color: var(--ink);
+}
+.vx-badge--accent  { background: var(--accent-container);  color: var(--on-accent-container); }
+.vx-badge--success { background: var(--success-container); color: var(--ink); }
+.vx-badge--warning { background: var(--warning-container); color: var(--ink); }
+.vx-badge--danger  { background: var(--danger-container);  color: var(--ink); }
+.vx-badge--info    { background: var(--info-container);    color: var(--ink); }
+.vx-badge--done    { background: var(--done-container);    color: var(--ink); }
+.vx-badge--solid-success { background: var(--success-emphasis); color: var(--on-emphasis); }
+.vx-badge--solid-danger  { background: var(--danger-emphasis);  color: var(--on-emphasis); }
+.vx-badge--solid-done    { background: var(--done-emphasis);    color: var(--on-emphasis); }
+.vx-badge--solid-closed  { background: var(--neutral-emphasis); color: var(--on-emphasis); }
+.vx-badge--solid-warning { background: var(--warning-emphasis); color: var(--on-warning-emphasis); }
+.vx-dot { width: 8px; height: 8px; border-radius: var(--radius-full); background: currentColor; }
+.vx-badge .vx-dot.is-success { color: var(--success-fg); }
+.vx-badge .vx-dot.is-warning { color: var(--warning-fg); }
+.vx-badge .vx-dot.is-danger  { color: var(--danger-fg); }
+.vx-badge .vx-dot.is-info    { color: var(--info-fg); }
+.vx-badge .vx-dot.is-done    { color: var(--done-fg); }
+
+/* ---------- Alert ---------- */
+.vx-alert {
+  display: flex; gap: var(--space-3); padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-sm); background: var(--info-container); color: var(--ink);
+  border: 1px solid var(--border-subtle);
+}
+.vx-alert__title { font: var(--type-title-small); margin: 0; }
+.vx-alert__body { font: var(--type-body-medium); margin: 0; }
+.vx-alert--success { background: var(--success-container); }
+.vx-alert--warning { background: var(--warning-container); }
+.vx-alert--danger  { background: var(--danger-container); }
+.vx-alert--done    { background: var(--done-container); }
+.vx-alert--success .vx-alert__title { color: var(--success-fg); }
+.vx-alert--warning .vx-alert__title { color: var(--warning-fg); }
+.vx-alert--danger  .vx-alert__title { color: var(--danger-fg); }
+.vx-alert--info    .vx-alert__title { color: var(--info-fg); }
+.vx-alert--done    .vx-alert__title { color: var(--done-fg); }
+
+/* ---------- Tabs ---------- */
+.vx-tabs { display: flex; gap: var(--space-1); border-bottom: 1px solid var(--border-subtle); }
+.vx-tab {
+  padding: var(--space-2) var(--space-4); background: none; border: 0; cursor: pointer;
+  font: var(--type-label-large); color: var(--ink-muted);
+  border-bottom: 2px solid transparent; margin-bottom: -1px;
+}
+.vx-tab:hover { color: var(--ink); }
+.vx-tab[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--accent); }
+
+/* ---------- Data table (Carbon-dense) ---------- */
+.vx-table { width: 100%; border-collapse: collapse; font: var(--type-body-compact); }
+.vx-table th {
+  text-align: left; font: var(--type-label-medium); color: var(--ink-muted);
+  padding: var(--space-2) var(--space-3); background: var(--layer-02);
+  border-bottom: 1px solid var(--border-strong);
+}
+.vx-table td { padding: var(--space-2) var(--space-3); border-bottom: 1px solid var(--border-subtle); }
+.vx-table tbody tr:hover { background: var(--layer-03); }
+.vx-table .is-num { font: var(--type-data-large); text-align: right; }
+
+/* ---------- Link, divider, avatar, tooltip-ish ---------- */
+.vx-link { color: var(--link); text-underline-offset: 3px; }
+.vx-link:visited { color: var(--link-visited); }
+.vx-divider { border: 0; border-top: 1px solid var(--border-subtle); margin: var(--space-4) 0; }
+.vx-avatar {
+  display: inline-grid; place-items: center; width: 32px; height: 32px;
+  border-radius: var(--radius-full); background: var(--accent-container);
+  color: var(--on-accent-container); font: var(--type-label-medium);
+}
+.vx-snackbar {
+  display: inline-flex; align-items: center; gap: var(--space-4);
+  padding: var(--space-3) var(--space-4); border-radius: var(--radius-sm);
+  background: var(--inverse-layer); color: var(--on-inverse-layer); box-shadow: var(--shadow-2);
+  font: var(--type-body-medium);
+}
+
+/* ---------- Dialog ---------- */
+.vx-dialog-backdrop { position: fixed; inset: 0; background: color-mix(in srgb, var(--scrim) 40%, transparent); display: grid; place-items: center; }
+.vx-dialog {
+  background: var(--layer-01); color: var(--ink); border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-3); padding: var(--space-5); width: min(480px, calc(100vw - 2 * var(--space-4)));
+}
+.vx-dialog__title { font: var(--type-headline-small); margin: 0 0 var(--space-2); }
+.vx-dialog__actions { display: flex; justify-content: flex-end; gap: var(--space-2); margin-top: var(--space-5); }
+
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
